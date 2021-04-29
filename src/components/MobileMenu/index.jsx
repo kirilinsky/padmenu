@@ -5,7 +5,7 @@ import "./mobileMenu.scss";
 /* jotai */
 import { useAtom } from "jotai";
 import { mobileMenuAtom } from "../../Atoms";
-import Order from "../Order";
+import Form from "./modules/Form";
 
 const MobileMenu = () => {
   const [mobile, set_mobile] = useAtom(mobileMenuAtom);
@@ -19,16 +19,15 @@ const MobileMenu = () => {
     }
   };
   return (
-    <div className={mobile + " trigger"} onClick={closeMenu}>
+    <div className={mobile + " trigger"} /* onClick={closeMenu} */>
       <div className="mobile-menu">
-        <div className="mobile-menu-order">
-          <Order />
+        <div className="mobile-menu-order"> 
+          <Form />
         </div>
         <button className="mobile-menu-close trigger" onClick={closeMenu}>
           &times;
-        </button>{" "}
+        </button>
       </div>
-      ;
     </div>
   );
 };

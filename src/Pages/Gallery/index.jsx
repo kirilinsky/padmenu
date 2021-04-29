@@ -6,16 +6,19 @@ import { orderAtom } from "../../Atoms"; */
 import { main } from "./data";
 import Item from "./modules/Item";
 import "./gallery.scss";
+import Navbar from "../../components/Navbar";
 const Gallery = () => {
   /* const [order, setOrder] = useAtom(orderAtom); */
 
   return (
-    <div className="cell gallery">
-      <div className="gallery-nav">Основные блюда</div>
-      <div className="gallery-grid">
-        {main.map((item, index) => (
-          <Item key={index} item={item} />
-        ))}
+    <div className="menu">
+      <div className="cell gallery">
+        <Navbar />
+        <div className="gallery-grid">
+          {main.map((item, index) => (
+            <Item key={index} item={item} />
+          ))}
+        </div>
       </div>
     </div>
   );

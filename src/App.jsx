@@ -1,16 +1,17 @@
+import Gallery from "./Pages/Gallery";
 import Header from "./components/Header";
-import Menu from "./components/Menu";
 import MobileMenu from "./components/MobileMenu";
-import QRMobile from "./components/QrMobile";
-
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 function App() {
   return (
-    <div className="wrap">
-      <Header />
-      <Menu />
-      <MobileMenu />
-      <QRMobile />
-    </div>
+    <Router>
+      <div className="wrap">
+        <Header />
+        <MobileMenu />
+
+        <Gallery />
+      </div>
+    </Router>
   );
 }
 
