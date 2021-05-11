@@ -1,0 +1,32 @@
+.gallery-nav {
+  display: flex;
+  justify-content: space-between;
+  &-side {
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    &:active,
+    &:focus {
+      outline: 0;
+      border: none;
+      background: rgb(192, 159, 159);
+    }
+    &:hover {
+      background: #ddd;
+    }
+  }
+  &-center {
+    flex-grow: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: rgb(73, 73, 80);
+    letter-spacing: 1px;
+  }
+}

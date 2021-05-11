@@ -1,8 +1,9 @@
 import { useAtom } from "jotai";
 import React from "react";
 import { useForm } from "react-cool-form";
-import { loginAtom } from "../../../Atoms";
-import "./from.module.scss";
+import { loginAtom, tokenAtom } from "../../../Atoms";
+import { RiRefreshLine } from "react-icons/ri";
+import "./from.scss";
 
 const Field = ({ label, id, error, ...rest }) => (
   <div>
@@ -12,51 +13,61 @@ const Field = ({ label, id, error, ...rest }) => (
   </div>
 );
 
-const Form = () => {
+const Form = ({ getOrgs }) => {
   const [login, setLogin] = useAtom(loginAtom);
+
   const { form, mon, submit } = useForm({
     defaultValues: login,
     onStateChange: ({ values }) => {
       setLogin(values);
     },
     onSubmit: (values) => {
-      console.log(values);
+      getOrgs();
     },
   });
+
   const [errors, values] = mon(["errors", "values"], {
     errorWithTouched: true,
   });
   return (
     <div>
       <form ref={form} noValidate>
-        <Field
-          id="url"
-          label="Адрес (URL)"
-          name="url"
-          required
-          error={errors.name}
-        />
-        <Field
-          id="user"
-          label="Пользователь"
-          name="user"
-          type="user"
-          required
-          error={errors.name}
-        />
-        <Field
-          id="password"
-          label="Пароль"
-          name="password"
-          type="password"
-          required
-          error={errors.password}
-        />
-        <div className="btn">
-          <button type="button" onClick={submit}>
-            загрузить
-          </button>
+        <div className="form-block">
+          <Field
+            id="url"
+            label="Адрес (URL)"
+            name="url"
+            required
+            error={errors.name}
+          />
         </div>
+        <div className="form-block">
+          <div className="form-block-column">
+            <Field
+              id="user"
+              label="Пользователь"
+              name="user"
+              type="user"
+              required
+              error={errors.name}
+            />
+            <Field
+              id="password"
+              label="Пароль"
+              name="password"
+              type="password"
+              required
+              error={errors.password}
+            />
+          </div>
+          <div className="form-block-action">
+            <button onClick={submit}>
+              <RiRefreshLine />
+            </button>
+          </div>
+        </div>
+
+        <div className="btn"></div>
       </form>
     </div>
   );

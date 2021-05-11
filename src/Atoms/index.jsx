@@ -22,14 +22,24 @@ const atomWithLocalStorage = (key, initialValue) => {
 };
 
 export const tableNumberAtom = atomWithLocalStorage("table", "001");
+
 export const loginAtom = atomWithLocalStorage("login", {
   url: "https://iiko.biz:9900/api/0",
   user: "api@flagman-it.ru",
   password: "gxX-PvN-8zu-2Gm",
 });
+
+export const orgAtom = atomWithLocalStorage("org", {
+  id: null,
+  oname: null,
+  fullName: null,
+});
+
 export const tokenAtom = atomWithLocalStorage("token", {
   token: null,
   given: null,
 });
 
 export const mobileMenuAtom = atom("mobile closed");
+
+export const dataAtom = atom([]);

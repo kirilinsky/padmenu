@@ -43,11 +43,13 @@ export const main = [
   },
 ];
 
-export const bakery = [
+export const categories = [
   {
     id: "3442dec5-7f12-4df6-a9fb-f0bb6752da82",
-    img: "canolli",
-    title: "Канолли",
-    price: "122",
+    title: "Десерты",
+  },
+  {
+    id: "3442dec5-7f12-4df6-a9fb-f0bb6752da82",
+    title: "Мяско",
   },
 ];

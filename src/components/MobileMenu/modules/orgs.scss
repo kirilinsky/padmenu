@@ -1,0 +1,49 @@
+.orgs {
+  width: 93%;
+  margin: 10px auto;
+  color: #fff;
+  &-list {
+    list-style-type: none;
+    padding: 1px;
+    &-item {
+      padding: 6px 10px;
+      background: #fff;
+      color: #000;
+      border-radius: 3px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 3px 0;
+      &_title {
+        font-size: 15px;
+        font-weight: bold;
+      }
+      &_subtitle {
+        font-size: 12px;
+        color: #999;
+        margin-top: 3px;
+        margin-left: 3px;
+      }
+      &-wrap {
+        flex-direction: column;
+        display: flex;
+      }
+      &:active,
+      &:focus,
+      &:hover {
+        margin: 5px 0;
+        transform: scale(1.02);
+        transition: 0.3s;
+        cursor: pointer;
+      }
+
+      &-status {
+        border: none;
+        font-size: 34px;
+      }
+    }
+  }
+}
+.green {
+  color: #4caf50;
+}

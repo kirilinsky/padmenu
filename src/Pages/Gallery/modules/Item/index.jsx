@@ -1,10 +1,11 @@
 import React from "react";
-import "./item.scss";
+import { Link } from "react-router-dom";
+import "../item.scss";
 /* jotai */
 
 const Item = ({ item }) => {
   return (
-    <div className="item">
+    <Link to={`/product/${item.id}`} className="item">
       <div className="item-img">
         <img
           src={require(`../../data/img/${item.img}`).default}
@@ -20,7 +21,7 @@ const Item = ({ item }) => {
           <button onClick={() => addItem(item)}>добавить</button>
         </div> */}
       </div>
-    </div>
+    </Link>
   );
 };
 
