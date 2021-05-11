@@ -5,27 +5,20 @@ import table from "./assets/table.svg";
 /* jotai */
 
 import { useAtom } from "jotai";
-import { tableNumberAtom, mobileMenuAtom } from "../../Atoms";
+import { tableNumberAtom, MenuAtom } from "../../Atoms";
 
-const Header = () => {
+const Header = ({ openMenu }) => {
   const [tableNumber] = useAtom(tableNumberAtom);
-  const [_, set_mobile] = useAtom(mobileMenuAtom);
+  const [_, set_menu] = useAtom(MenuAtom);
   const [buttonCount, setButtonCount] = useState(0);
 
   const debug = () => {
     setButtonCount(buttonCount + 1);
   };
 
-  const openMobile = () => {
-    set_mobile("mobile will-opened");
-    setTimeout(() => {
-      set_mobile("mobile");
-    }, 500);
-  };
-
   useEffect(() => {
     if (buttonCount >= 2) {
-      openMobile();
+      openMenu();
       setButtonCount(0);
     }
   }, [buttonCount]);

@@ -1,4 +1,4 @@
-.mobile {
+.settings {
   height: 100vh;
   position: fixed;
   width: 100vw;
@@ -14,7 +14,7 @@
     display: flex;
     opacity: 0;
     transition: all 0.3s;
-    .mobile-menu {
+    .settings-menu {
       display: flex;
       transform: translateX(150%);
     }
@@ -23,14 +23,14 @@
     opacity: 0;
     transition: all 0.5s;
     transition-delay: 0.5s;
-    .mobile-menu {
+    .settings-menu {
       transform: translateX(150%);
       transition: all 0.5s linear;
     }
   }
   &.closed {
     display: none;
-    .mobile-menu {
+    .settings-menu {
       display: none;
     }
   }

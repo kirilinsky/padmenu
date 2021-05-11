@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./orgs.scss";
 import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
 import { useAtom } from "jotai";
 import { orgAtom } from "../../../Atoms";
 const Orgs = ({ orgs }) => {
   const [currentOrg, setCurrentOrg] = useAtom(orgAtom);
+  const [_orgs, set_orgs] = useState(orgs);
 
   const tryToSetCurrentOrg = (e, x) => {
     const { id, name, fullName } = x;
@@ -15,14 +16,20 @@ const Orgs = ({ orgs }) => {
     setCurrentOrg({ name, id, fullName });
   };
 
-  if (orgs.length === 0) {
+  useEffect(() => {
+    if (currentOrg.id) {
+      set_orgs([...orgs, currentOrg]);
+    }
+  }, [currentOrg]);
+
+  if (_orgs.length === 0) {
     return <div className="orgs">список организаций пуст</div>;
   }
   return (
     <div className="orgs">
       <h4>Организации</h4>
       <ul className="orgs-list">
-        {orgs.map((x) => (
+        {_orgs.map((x) => (
           <li
             key={x.id}
             onClick={(e) => tryToSetCurrentOrg(e, x)}

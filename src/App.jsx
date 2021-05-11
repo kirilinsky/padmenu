@@ -9,25 +9,28 @@ import {
 } from "react-router-dom";
 import ProductPage from "./Pages/ProductPage";
 import { useAtom } from "jotai";
-import { loginAtom, mobileMenuAtom, tokenAtom } from "./Atoms";
+import { loginAtom, MenuAtom, tokenAtom } from "./Atoms";
 import { useEffect } from "react";
 import moment from "moment";
 import axios from "axios";
 
 function App() {
   const [config] = useAtom(loginAtom);
-  const [menu, setMenu] = useAtom(mobileMenuAtom);
+  const [_, setMenu] = useAtom(MenuAtom);
   const [auth, setAuth] = useAtom(tokenAtom);
 
   const openMenu = () => {
-    setMenu("mobile will-opened");
+    setMenu("settings will-opened");
     setTimeout(() => {
-      setMenu("mobile");
+      setMenu("settings");
     }, 500);
   };
   const tryToLogin = () => {
+    if (!config.user) {
+      openMenu();
+    }
     axios
-      .get("/auth/access_token2", {
+      .get("/auth/access_token", {
         baseURL: config.url,
         method: "GET",
         mode: "no-cors",
@@ -68,7 +71,7 @@ function App() {
   return (
     <Router>
       <div className="wrap">
-        <Header />
+        <Header openMenu={openMenu} />
         <Switch>
           <Route exact path="/menu/:id?">
             <Gallery />

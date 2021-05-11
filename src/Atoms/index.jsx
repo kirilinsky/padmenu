@@ -40,6 +40,6 @@ export const tokenAtom = atomWithLocalStorage("token", {
   given: null,
 });
 
-export const mobileMenuAtom = atom("mobile closed");
+export const MenuAtom = atom("settings closed");
 
 export const dataAtom = atom([]);
